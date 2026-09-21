@@ -33,5 +33,3 @@ The fixed dates come from the assignment: group and topic registered by the end 
 - **Weeks 11 and 12 are your buffer.** There are no deliverables in them, so use them for slippage from week 10 and for rehearsal, not for new features.
 - **Deadlines are fixed.** Late submission is accepted only for a documented reason agreed with the instructor before the due date. Another assignment or exam isn't a valid reason.
 - **Extra features cost time.** If the group falls behind at the D2 checkpoint in week 5, drop the additions first.
-
-If you'd like, I can put this roadmap into `docs/roadmap.md` in the repo skeleton, or turn it into a week-by-week table you can paste into the work-allocation Google Sheet.
