@@ -45,6 +45,7 @@ https://www.youtube.com/watch?v=pJYOG6klqj8
 | 11. Work allocation, 12. References, AI-use appendix, overall integration and writing quality | M10 (M1 collects every member's signature) |
 
 ## 4. Project Structure
+```
 service-marketplace/
 ├── README.md
 ├── .gitignore
@@ -76,3 +77,4 @@ service-marketplace/
         ├── model/
         ├── ui/               browse, search, master-detail, editing, report forms
         └── Main.java
+```
