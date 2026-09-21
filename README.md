@@ -60,6 +60,6 @@ The assignment requires at least 8 entity sets, 8 relationships, a weak entity s
 - A booking must store the price actually charged, which may differ from the current list price.
 - A review can exist only for a booking with status "completed". This is hard to show in an ER diagram, so write it as a business rule and enforce it with a trigger or application-level check, with a justification.
 - The platform's commission should be separated from the payment amount so both sides can be reported.
-- If you use MySQL, use 8.0 or later, and test by inserting data that violates a CHECK to confirm it is actually rejected (the assignment requires this testing).
+
 
 If you like, I can draft an initial list of 15–20 business rules for Service Marketplace, a first-draft list of entities and relationships, or a weekly work-allocation table to paste into your Google Sheet.
