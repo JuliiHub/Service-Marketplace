@@ -1,5 +1,6 @@
 # Work Allocation for a 10-Person Group: Service Marketplace Topic
 
+PLEASE WATCH THIS IF YOU DON'T FAMILIAR WITH GITHUB
 
 ## 1. Roles
 
