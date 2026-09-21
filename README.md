@@ -44,23 +44,35 @@ https://www.youtube.com/watch?v=pJYOG6klqj8
 | 9. The application | M8, M9 (with a screenshot of every form and the SQL behind each screen) |
 | 11. Work allocation, 12. References, AI-use appendix, overall integration and writing quality | M10 (M1 collects every member's signature) |
 
-## 4. Avoiding Lost Individual Marks
-
-- Grades are individual: members of the same group can receive different marks, and at the presentation each member is questioned individually. Answering "that was someone else's section" costs marks.
-- Hold a "role swap" session every few weeks: one person explains another's part (for example, M8 explains a functional dependency, M4 explains which SQL statement a button runs).
-- Log the work in the Google Sheet every week, because the instructor uses that record when assessing individual contribution.
-- The other 30% of the project mark is individual participation in discussions at the three final presentation sessions, so each member should prepare one or two questions for other groups.
-- Any section produced with substantial AI help must be declared in an appendix (what was generated and how it was verified), and you must still be able to explain it.
-
-## 5. Points Specific to Service Marketplace for M2–M3 to Settle Early
-
-The assignment requires at least 8 entity sets, 8 relationships, a weak entity set, an M:N relationship with its own attribute, one of (ISA hierarchy / multivalued attribute / ternary relationship), and a recursive relationship with role names on both edges. Some suggestions based on the topic's "Data to model" section (the group decides):
-
-- Multivalued attribute: a customer's phone numbers. Addresses could be a weak entity of Customer (one way to satisfy the weak-entity requirement).
-- Recursive relationship: the topic doesn't list one, so you could add sub-categories under Category (parent / sub-category) and name the roles.
-- A booking must store the price actually charged, which may differ from the current list price.
-- A review can exist only for a booking with status "completed". This is hard to show in an ER diagram, so write it as a business rule and enforce it with a trigger or application-level check, with a justification.
-- The platform's commission should be separated from the payment amount so both sides can be reported.
-
-
-If you like, I can draft an initial list of 15–20 business rules for Service Marketplace, a first-draft list of entities and relationships, or a weekly work-allocation table to paste into your Google Sheet.
+## 4. Project Structure
+service-marketplace/
+├── README.md
+├── .gitignore
+├── docs/
+│   ├── group-info.md
+│   ├── business-rules.md
+│   ├── service-marketplace-topic.md
+│   ├── D1-proposal/
+│   ├── D2-progress-report/
+│   ├── D3-final-report/
+│   │   └── appendix-ai-use.md
+│   ├── D4-presentation/
+│   ├── er-diagram/
+│   ├── schema-and-normalization/
+│   └── screenshots/
+├── database/
+│   ├── 01_create_schema_and_data.sql
+│   ├── 02_queries.sql
+│   ├── 03_updates_and_transaction.sql
+│   ├── 04_constraint_tests.sql
+│   └── relational-algebra.md
+└── app/
+    ├── config/
+    │   └── config.properties.example
+    ├── lib/                  (or a pom.xml / build.gradle instead)
+    └── src/
+        ├── db/               connection layer, reads settings from config
+        ├── dao/              PreparedStatement SQL for each table
+        ├── model/
+        ├── ui/               browse, search, master-detail, editing, report forms
+        └── Main.java
