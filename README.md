@@ -1,6 +1,5 @@
 # Work Allocation for a 10-Person Group: Service Marketplace Topic
 
-The assignment (section 1.3) already suggests a division of roles for groups of 10–11, so I followed it and adjusted it to fit exactly 10 people. M1–M10 are placeholders; replace them with real names.
 
 ## 1. Roles
 
