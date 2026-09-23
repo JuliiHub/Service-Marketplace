@@ -5,7 +5,7 @@
 This is organised by week and member, so each row shows what everyone is doing at that time. M1 to M10 are placeholders for real names. Weeks 1 to 3 are planning, weeks 4 to 5 are the ER and schema draft, weeks 6 to 10 are build and report, and weeks 11 to 15 are presentation.
 
 ## Weeks 1–5: Requirements, ER diagram, D1 and D2
-
+if you don't know what your roll is, go to README
 | Week | M1 | M2 | M3 | M4 | M5 | M6 | M7 | M8 | M9 | M10 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | Register group and topic; create repo; set up work sheet | Business rules; entity list | Relationship draft | ER discussion | ER discussion | ER discussion | ER discussion | ER discussion | ER discussion | ER discussion |
