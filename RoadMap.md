@@ -2,6 +2,10 @@
 
 The fixed dates come from the assignment: group and topic registered by the end of week 2, D1 and topic confirmation in week 3, D2 in week 5, D3 with D5 and D6 in week 10, and the presentation (D4) in weeks 13 to 15. Week numbers assume the course runs one lecture per week, which the assignment implies but doesn't state. Owners use the earlier M1 to M10 roles.
 
+### Tools and Programming Languages
+The implementation will use JDK (fill in LTS version), Swing, JDBC, and SQL (MySQL dialect) with MySQL 8.0 or later, MySQL Connector/J, a build tool such as Maven, and a diagramming tool such as draw.io. The relational choices follow established database-modelling and normalisation principles [2], while official documentation supports the selected MySQL and Java platform [3], [4].
+
+
 ## Roadmap by phase
 
 | Phase | Weeks | Goal | Main tasks | Exit check | Owners |
