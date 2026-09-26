@@ -5,6 +5,13 @@ The fixed dates come from the assignment: group and topic registered by the end 
 ### Tools and Programming Languages
 The implementation will use JDK (fill in LTS version), Swing, JDBC, and SQL (MySQL dialect) with MySQL 8.0 or later, MySQL Connector/J, a build tool such as Maven, and a diagramming tool such as draw.io. The relational choices follow established database-modelling and normalisation principles [2], while official documentation supports the selected MySQL and Java platform [3], [4].
 
+### References
+[1] J.-C. Rochet and J. Tirole, "Platform Competition in Two-Sided Markets," Journal of the European Economic Association, vol. 1, no. 4, pp. 990–1029, 2003, doi: 10.1162/154247603322493212.
+[2] A. Silberschatz, H. F. Korth, and S. Sudarshan, Database System Concepts, 7th ed. New York, NY, USA: McGraw-Hill, 2020, ISBN 978-0-07-802215-9.
+[3] Oracle, MySQL Reference Manual. [Online]. Available: https://dev.mysql.com/doc/refman/8.0/en/ [Accessed: (fill in date)].
+[4] Oracle, Java Platform, Standard Edition API Specification. [Online]. Available: https://docs.oracle.com/en/java/javase/ [Accessed: (fill in date)].
+
+
 
 ## Roadmap by phase
 
