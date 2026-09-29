@@ -1,0 +1,147 @@
+erDiagram
+
+    MERCHANT {
+        int merchant_id PK
+        string email UK
+        string display_name
+        string verification_status
+        datetime registered_at
+    }
+
+    INDIVIDUAL_MERCHANT {
+        int merchant_id PK, FK
+        string first_name
+        string last_name
+        date date_of_birth
+        string national_id UK
+    }
+
+    BUSINESS_MERCHANT {
+        int merchant_id PK, FK
+        string legal_name
+        string business_registration_no UK
+        string tax_number UK
+        string contact_person
+    }
+
+    CUSTOMER {
+        int customer_id PK
+        string email UK
+        string full_name
+        string password_hash
+        datetime registered_at
+    }
+
+    CUSTOMER_ADDRESS {
+        int customer_id PK, FK
+        int address_no PK
+        string address_label
+        string street
+        string city
+        string postal_code
+        boolean is_default
+    }
+
+    CUSTOMER_PHONE {
+        int customer_id PK, FK
+        string phone_number PK
+        boolean is_primary
+    }
+
+    CATEGORY {
+        int category_id PK
+        int parent_category_id FK
+        string category_name UK
+        string description
+        boolean is_active
+    }
+
+    SERVICE {
+        int service_id PK
+        int merchant_id FK
+        int category_id FK
+        string service_name
+        string description
+        decimal list_price
+        string duration
+        boolean is_offered
+        datetime created_at
+    }
+
+    BOOKING {
+        int booking_id PK
+        int customer_id FK
+        int service_id FK
+        datetime booking_datetime
+        decimal charged_price
+        string status
+        string customer_note
+        datetime created_at
+    }
+
+    BOOKING_STATUS_HISTORY {
+        int booking_id PK, FK
+        int seq_no PK
+        string status
+        datetime changed_at
+        string change_reason
+    }
+
+    PAYMENT {
+        int payment_id PK
+        int booking_id FK
+        decimal amount_paid
+        string payment_method
+        datetime payment_date
+        decimal platform_commission
+        string payment_status
+        string transaction_reference UK
+    }
+
+    REVIEW {
+        int review_id PK
+        int booking_id FK
+        int customer_id FK
+        int score
+        string comment
+        datetime review_date
+    }
+
+    FAVOURITE {
+        int customer_id PK, FK
+        int service_id PK, FK
+        datetime saved_at
+    }
+
+
+    %% ISA
+    MERCHANT ||--|| INDIVIDUAL_MERCHANT : "is a"
+    MERCHANT ||--|| BUSINESS_MERCHANT : "is a"
+
+    %% Merchant and Service
+    MERCHANT ||--o{ SERVICE : offers
+
+    %% Category
+    CATEGORY ||--o{ SERVICE : classifies
+
+    %% Customer multivalued attributes
+    CUSTOMER ||--o{ CUSTOMER_ADDRESS : has
+    CUSTOMER ||--o{ CUSTOMER_PHONE : has
+
+    %% Booking
+    CUSTOMER ||--o{ BOOKING : makes
+    SERVICE ||--o{ BOOKING : receives
+
+    %% Weak entity
+    BOOKING ||--|{ BOOKING_STATUS_HISTORY : records
+
+    %% Payment
+    BOOKING ||--o| PAYMENT : has
+
+    %% Review
+    CUSTOMER ||--o{ REVIEW : writes
+    BOOKING ||--o| REVIEW : receives
+
+    %% Favourite M:N
+    CUSTOMER ||--o{ FAVOURITE : saves
+    SERVICE ||--o{ FAVOURITE : "is saved"
