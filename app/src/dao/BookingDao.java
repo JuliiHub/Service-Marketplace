@@ -11,9 +11,9 @@ import java.util.List;
 public class BookingDao {
     private final PaymentDao paymentDao = new PaymentDao();
 
-    private static final String SELECT =
-        "SELECT booking_id, customer_id, service_id, payment_id, booking_datetime, status, " +
-        "charged_price, customer_note, created_at FROM booking";
+    private static final String SELECT = "SELECT booking_id, customer_id, service_id, payment_id, booking_datetime, status, "
+            +
+            "charged_price, customer_note, created_at FROM booking";
 
     private static Booking map(ResultSet rs) throws SQLException {
         return new Booking(rs.getInt("booking_id"), rs.getInt("customer_id"), rs.getInt("service_id"),
@@ -25,28 +25,43 @@ public class BookingDao {
     public List<Booking> findAll() throws SQLException {
         List<Booking> list = new ArrayList<>();
         try (Connection con = Database.getConnection();
-             PreparedStatement ps = con.prepareStatement(SELECT + " ORDER BY booking_datetime DESC");
-             ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) list.add(map(rs));
+                PreparedStatement ps = con.prepareStatement(SELECT + " ORDER BY booking_datetime DESC");
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next())
+                list.add(map(rs));
         }
         return list;
     }
 
-    /** Rows for the detail table: id, service title, date/time, status, price, review score. */
+    /** Returns null if there is no such booking. */
+    public Booking findById(int bookingId) throws SQLException {
+        try (Connection con = Database.getConnection();
+                PreparedStatement ps = con.prepareStatement(SELECT + " WHERE booking_id = ?")) {
+            ps.setInt(1, bookingId);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? map(rs) : null;
+            }
+        }
+    }
+
+    /**
+     * Rows for the detail table: id, service title, date/time, status, price,
+     * review score.
+     */
     public List<Object[]> findByCustomer(int customerId) throws SQLException {
         String sql = "SELECT b.booking_id, s.title, b.booking_datetime, b.status, b.charged_price, r.score " +
-                     "FROM booking b " +
-                     "JOIN service s ON s.service_id = b.service_id " +
-                     "LEFT JOIN review r ON r.booking_id = b.booking_id " +
-                     "WHERE b.customer_id = ? ORDER BY b.booking_datetime DESC";
+                "FROM booking b " +
+                "JOIN service s ON s.service_id = b.service_id " +
+                "LEFT JOIN review r ON r.booking_id = b.booking_id " +
+                "WHERE b.customer_id = ? ORDER BY b.booking_datetime DESC";
         List<Object[]> rows = new ArrayList<>();
         try (Connection con = Database.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, customerId);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    rows.add(new Object[]{rs.getInt(1), rs.getString(2), rs.getTimestamp(3),
-                                          rs.getString(4), rs.getBigDecimal(5), rs.getObject(6)});
+                    rows.add(new Object[] { rs.getInt(1), rs.getString(2), rs.getTimestamp(3),
+                            rs.getString(4), rs.getBigDecimal(5), rs.getObject(6) });
                 }
             }
         }
@@ -63,7 +78,7 @@ public class BookingDao {
         int id = DaoUtil.next(con, "booking", "booking_id");
         String status = b.getStatus() == null ? "REQUESTED" : b.getStatus();
         String sql = "INSERT INTO booking (booking_id, customer_id, service_id, payment_id, " +
-                     "booking_datetime, status, charged_price, customer_note) VALUES (?,?,?,?,?,?,?,?)";
+                "booking_datetime, status, charged_price, customer_note) VALUES (?,?,?,?,?,?,?,?)";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
             ps.setInt(2, b.getCustomerId());
@@ -78,7 +93,10 @@ public class BookingDao {
         return id;
     }
 
-    /** Transaction: insert the payment, then the booking that points at it. All or nothing. */
+    /**
+     * Transaction: insert the payment, then the booking that points at it. All or
+     * nothing.
+     */
     public int createWithPayment(Booking b, Payment p) throws SQLException {
         try (Connection con = Database.getConnection()) {
             con.setAutoCommit(false);
@@ -97,11 +115,29 @@ public class BookingDao {
         }
     }
 
+    /**
+     * Edits the date/time, status, price and note (customer, service and payment
+     * stay as they are).
+     */
+    public void update(Booking b) throws SQLException {
+        String sql = "UPDATE booking SET booking_datetime=?, status=?, charged_price=?, " +
+                "customer_note=? WHERE booking_id=?";
+        try (Connection con = Database.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setTimestamp(1, b.getBookingDatetime());
+            ps.setString(2, b.getStatus());
+            ps.setBigDecimal(3, b.getChargedPrice());
+            ps.setString(4, b.getCustomerNote());
+            ps.setInt(5, b.getId());
+            ps.executeUpdate();
+        }
+    }
+
     public void updateStatus(int bookingId, String status) throws SQLException {
         try (Connection con = Database.getConnection();
-             PreparedStatement ps = con.prepareStatement(
-                 "UPDATE booking SET status = ? WHERE booking_id = ?")) {
-            ps.setString(1, status);       // REQUESTED / CONFIRMED / COMPLETED / CANCELLED
+                PreparedStatement ps = con.prepareStatement(
+                        "UPDATE booking SET status = ? WHERE booking_id = ?")) {
+            ps.setString(1, status); // REQUESTED / CONFIRMED / COMPLETED / CANCELLED
             ps.setInt(2, bookingId);
             ps.executeUpdate();
         }
@@ -109,9 +145,9 @@ public class BookingDao {
 
     public void delete(int bookingId) throws SQLException {
         try (Connection con = Database.getConnection();
-             PreparedStatement ps = con.prepareStatement("DELETE FROM booking WHERE booking_id = ?")) {
+                PreparedStatement ps = con.prepareStatement("DELETE FROM booking WHERE booking_id = ?")) {
             ps.setInt(1, bookingId);
-            ps.executeUpdate();   // its review is deleted too (CASCADE)
+            ps.executeUpdate(); // its review is deleted too (CASCADE)
         }
     }
 }

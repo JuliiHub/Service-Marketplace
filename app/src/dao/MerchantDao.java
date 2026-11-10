@@ -26,6 +26,38 @@ public class MerchantDao {
         return list;
     }
 
+    /** Returns null if this merchant has no individual_merchant row. */
+    public IndividualMerchant findIndividual(int merchantId) throws SQLException {
+        String sql = "SELECT merchant_id, first_name, last_name, national_id, date_of_birth " +
+                "FROM individual_merchant WHERE merchant_id = ?";
+        try (Connection con = Database.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, merchantId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next())
+                    return null;
+                return new IndividualMerchant(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getDate(5));
+            }
+        }
+    }
+
+    /** Returns null if this merchant has no business_merchant row. */
+    public BusinessMerchant findBusiness(int merchantId) throws SQLException {
+        String sql = "SELECT merchant_id, legal_name, business_registration_no, tax_number, contact_person " +
+                "FROM business_merchant WHERE merchant_id = ?";
+        try (Connection con = Database.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, merchantId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next())
+                    return null;
+                return new BusinessMerchant(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5));
+            }
+        }
+    }
+
     /**
      * The ids inside m and im are ignored; the new merchant id is generated and
      * returned.
@@ -92,6 +124,18 @@ public class MerchantDao {
             ps.executeUpdate();
         }
         return id;
+    }
+
+    /** Edits the base merchant row (email and display name). */
+    public void update(Merchant m) throws SQLException {
+        try (Connection con = Database.getConnection();
+                PreparedStatement ps = con.prepareStatement(
+                        "UPDATE merchant SET email = ?, display_name = ? WHERE merchant_id = ?")) {
+            ps.setString(1, m.getEmail());
+            ps.setString(2, m.getDisplayName());
+            ps.setInt(3, m.getId());
+            ps.executeUpdate();
+        }
     }
 
     public void updateVerificationStatus(int merchantId, String status) throws SQLException {

@@ -24,6 +24,28 @@ public class SavedServiceDao {
         return list;
     }
 
+    /**
+     * Rows for a "saved services" table: service_id, title, list_price, saved_at.
+     */
+    public List<Object[]> findDetailsByCustomer(int customerId) throws SQLException {
+        String sql = "SELECT s.service_id, s.title, s.list_price, cs.saved_at " +
+                "FROM customer_saved_service cs " +
+                "JOIN service s ON s.service_id = cs.service_id " +
+                "WHERE cs.customer_id = ? ORDER BY cs.saved_at DESC";
+        List<Object[]> rows = new ArrayList<>();
+        try (Connection con = Database.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, customerId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    rows.add(new Object[] { rs.getInt(1), rs.getString(2),
+                            rs.getBigDecimal(3), rs.getTimestamp(4) });
+                }
+            }
+        }
+        return rows;
+    }
+
     public void save(int customerId, int serviceId) throws SQLException {
         try (Connection con = Database.getConnection();
                 PreparedStatement ps = con.prepareStatement(

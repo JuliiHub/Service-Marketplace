@@ -24,6 +24,22 @@ public class CustomerDao {
         return list;
     }
 
+    /** Returns null if there is no such customer. */
+    public Customer findById(int customerId) throws SQLException {
+        String sql = "SELECT customer_id, email, first_name, last_name, registered_at " +
+                "FROM customer WHERE customer_id = ?";
+        try (Connection con = Database.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, customerId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next())
+                    return null;
+                return new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getTimestamp(5));
+            }
+        }
+    }
+
     // passwordHash is passed separately because the model deliberately doesn't hold
     // it
     public void insert(Customer c, String passwordHash) throws SQLException {
