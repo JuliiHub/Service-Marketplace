@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>index.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Marketplace</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>index.html &mdash; Home page: the menu that links to every screen of the app.</p>
+<div class="indicator"><b>index.html</b> &mdash; Home page: the menu that links to every screen of the app.<span class="data">Data: none</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>Service Marketplace</h1>
+<p class="muted">Pick a screen. Each page shows its file name and purpose in the blue bar at the top.</p>
+<section><h2>Look up</h2>
+<ul>
+<li><a href="services-browse.html">Browse services</a> &ndash; every service with a row count</li>
+<li><a href="services-search.html">Search services</a> &ndash; filter by keyword, category and price</li>
+<li><a href="saved-services.html">Saved services</a> &ndash; a customer's favourites</li>
+</ul></section>
+<section><h2>Bookings (master-detail)</h2>
+<ul>
+<li><a href="customer-bookings.html">Customer and their bookings</a></li>
+<li><a href="booking-detail.html">Booking with its payment and review</a></li>
+<li><a href="booking-new.html">Create a booking and payment together</a></li>
+</ul></section>
+<section><h2>Edit data</h2>
+<ul>
+<li><a href="service-edit.html">Services</a></li>
+<li><a href="merchant-edit.html">Merchants (individual or business)</a></li>
+<li><a href="customer-edit.html">Customers</a></li>
+</ul></section>
+<section><h2>Reports</h2>
+<ul><li><a href="reports.html">The five topic reports</a></li></ul></section>
+</main>
 </body>
 </html>

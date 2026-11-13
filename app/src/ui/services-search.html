@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>services-search.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search services</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>services-search.html &mdash; Search form: filters services by keyword, category and price.</p>
+<div class="indicator"><b>services-search.html</b> &mdash; Search form: filters services with a parameterised query and shows the matches.<span class="data">Data: ServiceDao.search(keyword, categoryId, maxPrice)</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>Search services</h1>
+<section>
+<form action="#" method="get">
+<div class="row">
+<div><label for="keyword">Title contains</label><input id="keyword" name="keyword" type="text" placeholder="e.g. massage"></div>
+<div><label for="category">Category</label>
+<select id="category" name="category"><option value="">Any category</option><option>Chăm sóc da mặt</option><option>Massage trị liệu</option><option>Yoga &amp; Pilates</option></select></div>
+<div><label for="maxprice">Maximum price (VND)</label><input id="maxprice" name="maxprice" type="number" min="0" step="1000"></div>
+</div>
+<button type="submit">Search</button><button type="reset">Clear</button>
+</form>
+</section>
+<section>
+<p class="count">2 services match</p>
+<table>
+<thead><tr><th>ID</th><th>Title</th><th>Category</th><th>Merchant</th><th>List price (VND)</th><th>Duration (min)</th><th>Offered</th></tr></thead>
+<tbody>
+<tr><td>206</td><td>Massage cổ vai gáy</td><td>Massage trị liệu</td><td>An Binh Therapy</td><td>250,000</td><td>45</td><td>Yes</td></tr>
+<tr><td>214</td><td>Massage đá nóng</td><td>Massage trị liệu</td><td>Saigon Massage</td><td>450,000</td><td>75</td><td>Yes</td></tr>
+</tbody></table>
+<p class="muted">When nothing matches, show: "No services match these filters. Clear a filter and search again."</p>
+</section>
+</main>
 </body>
 </html>

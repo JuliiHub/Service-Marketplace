@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>booking-new.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New booking</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>booking-new.html &mdash; Insert form: creates a payment and its booking together in one transaction.</p>
+<div class="indicator"><b>booking-new.html</b> &mdash; Insert form: creates a payment and its booking together in one transaction (both saved or neither).<span class="data">Data: BookingDao.createWithPayment(booking, payment)</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>New booking</h1>
+<form action="#" method="post">
+<fieldset><legend>Booking</legend>
+<div class="row">
+<div><label for="customer">Customer</label><select id="customer" name="customer"><option>301 &ndash; Nhật Nguyễn</option></select></div>
+<div><label for="service">Service</label><select id="service" name="service"><option>216 &ndash; Chăm sóc da cổ chuyên sâu (300,000 VND)</option></select></div>
+</div>
+<div class="row">
+<div><label for="when">Date and time</label><input id="when" name="when" type="datetime-local"></div>
+<div><label for="price">Charged price (VND)</label><input id="price" name="price" type="number" min="0" step="1000"></div>
+</div>
+<label for="note">Customer note</label><textarea id="note" name="note" rows="2"></textarea>
+</fieldset>
+<fieldset><legend>Payment</legend>
+<div class="row">
+<div><label for="method">Method</label><select id="method" name="method"><option>MOMO</option><option>VNPay</option><option>BANK_TRANSFER</option><option>CREDIT_CARD</option><option>CASH</option></select></div>
+<div><label for="amount">Amount paid (VND)</label><input id="amount" name="amount" type="number" min="0" step="1000"></div>
+<div><label for="commission">Platform commission (VND)</label><input id="commission" name="commission" type="number" min="0" step="1000" value="0"></div>
+</div>
+</fieldset>
+<button type="submit">Create booking and payment</button><button type="reset">Clear</button>
+</form>
+<p class="msg">Message area: "Nothing was saved because the payment or the booking could not be created: (reason)."</p>
+</main>
 </body>
 </html>

@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>service-edit.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit services</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>service-edit.html &mdash; Editing form: insert, update and delete services, with a delete confirmation.</p>
+<div class="indicator"><b>service-edit.html</b> &mdash; Editing form: insert, update and delete services, with a confirmation before deleting.<span class="data">Data: ServiceDao.findAll(), findById(), insert(), update(), delete()</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>Edit services</h1>
+<section><h2>Services</h2>
+<table>
+<thead><tr><th>ID</th><th>Title</th><th>Merchant</th><th>List price</th><th></th></tr></thead>
+<tbody>
+<tr><td>201</td><td>Chăm sóc da mặt chuyên sâu</td><td>Spa Mai Anh</td><td>350,000</td><td><button type="button">Select</button></td></tr>
+<tr><td>202</td><td>Trị mụn chuẩn y khoa</td><td>Spa Mai Anh</td><td>450,000</td><td><button type="button">Select</button></td></tr>
+<tr><td colspan="5" class="muted">&hellip; remaining rows</td></tr>
+</tbody></table></section>
+<form action="#" method="post">
+<fieldset><legend>Service details</legend>
+<div class="row">
+<div><label for="merchant">Merchant</label><select id="merchant" name="merchant"><option>101 &ndash; Spa Mai Anh</option></select></div>
+<div><label for="category">Category</label><select id="category" name="category"><option>Chăm sóc da mặt</option></select></div>
+</div>
+<label for="title">Title</label><input id="title" name="title" type="text" required>
+<label for="description">Description</label><textarea id="description" name="description" rows="3"></textarea>
+<div class="row">
+<div><label for="price">List price (VND, 0 or more)</label><input id="price" name="price" type="number" min="0" step="1000" required></div>
+<div><label for="duration">Duration (minutes, more than 0)</label><input id="duration" name="duration" type="number" min="1" required></div>
+<div><label for="offered">Currently offered</label><input id="offered" name="offered" type="checkbox" checked></div>
+</div>
+<button type="submit">Insert as new</button><button type="submit">Update selected</button><button type="button">Delete selected</button><button type="reset">Clear form</button>
+</fieldset></form>
+<div class="confirm"><b>Confirm delete</b><br>Delete "Chăm sóc da mặt chuyên sâu"? This cannot be undone.
+<br><button type="button">Yes, delete</button><button type="button">Cancel</button></div>
+<p class="msg">Message area: "This service has bookings, so it cannot be deleted." (constraint errors in plain language)</p>
+</main>
 </body>
 </html>

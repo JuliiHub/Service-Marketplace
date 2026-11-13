@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>services-browse.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browse services</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>services-browse.html &mdash; Browse form: lists all services in a table with a row count.</p>
+<div class="indicator"><b>services-browse.html</b> &mdash; Browse form: lists all services in a table with a row count.<span class="data">Data: ServiceDao.findAll()</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>Browse services</h1>
+<p class="muted">All services, sorted by title.</p>
+<section>
+<p class="count">15 services found</p>
+<table>
+<thead><tr><th>ID</th><th>Title</th><th>Category</th><th>Merchant</th><th>List price (VND)</th><th>Duration (min)</th><th>Offered</th><th></th></tr></thead>
+<tbody>
+<tr><td>203</td><td>Cắt tóc nam nữ tạo kiểu</td><td>Cắt tóc nam nữ</td><td>Hair Salon Pro</td><td>150,000</td><td>45</td><td>Yes</td><td><a href="service-edit.html">Edit</a></td></tr>
+<tr><td>201</td><td>Chăm sóc da mặt chuyên sâu</td><td>Chăm sóc da mặt</td><td>Spa Mai Anh</td><td>350,000</td><td>60</td><td>Yes</td><td><a href="service-edit.html">Edit</a></td></tr>
+<tr><td>209</td><td>Thẻ tập Yoga 10 buổi</td><td>Yoga &amp; Pilates</td><td>Zen Yoga Studio</td><td>800,000</td><td>60</td><td>Yes</td><td><a href="service-edit.html">Edit</a></td></tr>
+<tr><td colspan="8" class="muted">&hellip; remaining rows</td></tr>
+</tbody></table>
+</section>
+</main>
 </body>
 </html>

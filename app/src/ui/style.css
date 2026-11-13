@@ -1,0 +1,26 @@
+/* Shared wireframe styling: structure only, no behaviour. */
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;background:#f5f6f8;color:#1d2330;line-height:1.5}
+.indicator{background:#1f3a5f;color:#fff;padding:10px 24px;font-size:15px;border-bottom:4px solid #e0a526}
+.indicator b{color:#f2c14e}
+.indicator .data{display:block;font-size:12px;opacity:.8;margin-top:2px}
+nav{background:#fff;padding:10px 24px;border-bottom:1px solid #d9dde4;font-size:14px}
+nav a{margin-right:16px;text-decoration:none;color:#1f3a5f}
+nav a:hover{text-decoration:underline}
+main{max-width:1040px;margin:24px auto;padding:0 24px}
+h1{font-size:24px;margin:0 0 4px}
+h2{font-size:17px;margin:0 0 10px}
+section,fieldset{background:#fff;border:1px solid #d9dde4;border-radius:4px;padding:14px 18px;margin:0 0 18px}
+legend{font-weight:600;padding:0 6px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{border-bottom:1px solid #e8ebf0;padding:7px 8px;text-align:left}
+th{background:#eef1f6}
+label{display:block;margin:10px 0 3px;font-size:13px;font-weight:600}
+input,select,textarea{width:100%;padding:7px;box-sizing:border-box;font:inherit;border:1px solid #b9c0cc;border-radius:3px}
+input[type=checkbox],input[type=radio]{width:auto}
+.row{display:flex;gap:16px;flex-wrap:wrap}
+.row>*{flex:1;min-width:180px}
+button{padding:7px 16px;margin:12px 8px 0 0;font:inherit;cursor:pointer}
+.muted{color:#5d6675;font-size:13px}
+.count{font-weight:600;margin:0 0 8px}
+.msg{background:#fff6dd;border:1px solid #e0a526;padding:8px 12px;border-radius:3px;font-size:13px}
+.confirm{background:#fdecea;border:1px solid #d9534f;padding:10px 14px;border-radius:3px;margin-top:14px}

@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>merchant-edit.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit merchants</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>merchant-edit.html &mdash; Editing form: add, edit, verify and delete merchants (individual or business).</p>
+<div class="indicator"><b>merchant-edit.html</b> &mdash; Editing form: add, edit, verify and delete merchants, individual or business.<span class="data">Data: MerchantDao.findAll(), findIndividual(), findBusiness(), insertIndividual(), insertBusiness(), update(), updateVerificationStatus(), delete()</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>Edit merchants</h1>
+<section><h2>Merchants</h2>
+<table>
+<thead><tr><th>ID</th><th>Display name</th><th>Email</th><th>Verification</th><th></th></tr></thead>
+<tbody>
+<tr><td>101</td><td>Spa Mai Anh</td><td>contact@spamaianh.vn</td><td>VERIFIED</td><td><button type="button">Select</button></td></tr>
+<tr><td>111</td><td>SkinCare Lab Center</td><td>skincare.lab@gmail.com</td><td>PENDING</td><td><button type="button">Select</button></td></tr>
+<tr><td colspan="5" class="muted">&hellip; remaining rows</td></tr>
+</tbody></table></section>
+<form action="#" method="post">
+<fieldset><legend>Merchant</legend>
+<div class="row">
+<div><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+<div><label for="display">Display name</label><input id="display" name="display" type="text" required></div>
+<div><label for="verify">Verification status</label><select id="verify" name="verify"><option>PENDING</option><option>VERIFIED</option><option>REJECTED</option></select></div>
+</div>
+<label>Merchant type (only when adding)</label>
+<div><label><input type="radio" name="type" value="individual" checked> Individual</label>
+<label><input type="radio" name="type" value="business"> Business</label></div>
+</fieldset>
+<fieldset><legend>Individual details</legend>
+<div class="row">
+<div><label for="ifirst">First name</label><input id="ifirst" name="ifirst" type="text"></div>
+<div><label for="ilast">Last name</label><input id="ilast" name="ilast" type="text"></div>
+</div>
+<div class="row">
+<div><label for="nid">National ID</label><input id="nid" name="nid" type="text"></div>
+<div><label for="dob">Date of birth (optional)</label><input id="dob" name="dob" type="date"></div>
+</div>
+</fieldset>
+<fieldset><legend>Business details</legend>
+<div class="row">
+<div><label for="legal">Legal name</label><input id="legal" name="legal" type="text"></div>
+<div><label for="reg">Business registration no.</label><input id="reg" name="reg" type="text"></div>
+</div>
+<div class="row">
+<div><label for="tax">Tax number (optional)</label><input id="tax" name="tax" type="text"></div>
+<div><label for="contact">Contact person (optional)</label><input id="contact" name="contact" type="text"></div>
+</div>
+</fieldset>
+<button type="submit">Add merchant</button><button type="submit">Save changes</button><button type="button">Update verification only</button><button type="button">Delete selected</button>
+</form>
+<div class="confirm"><b>Confirm delete</b><br>Delete "Spa Mai Anh" and all its services? This cannot be undone.
+<br><button type="button">Yes, delete</button><button type="button">Cancel</button></div>
+</main>
 </body>
 </html>

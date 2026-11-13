@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>reports.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reports</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>reports.html &mdash; Report screen: the topic's five aggregate reports.</p>
+<div class="indicator"><b>reports.html</b> &mdash; Report screen: the topic's five aggregate reports, each with its own inputs and result table.<span class="data">Data: ReportDao.servicesWithAvgScore(), commissionPerMonth(), customersWithManyMerchants(), merchantsWithoutRecentBookings(), topCategoryByAvgBooking()</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>Reports</h1>
+<section><h2>1. A merchant's services with average review score</h2>
+<form action="#" method="get"><label for="m1">Merchant</label><select id="m1" name="merchant"><option>101 &ndash; Spa Mai Anh</option></select><button type="submit">Run report</button></form>
+<table><thead><tr><th>Service ID</th><th>Title</th><th>Reviews</th><th>Average score</th></tr></thead>
+<tbody><tr><td>201</td><td>Chăm sóc da mặt chuyên sâu</td><td>1</td><td>5.00</td></tr><tr><td>202</td><td>Trị mụn chuẩn y khoa</td><td>2</td><td>4.50</td></tr></tbody></table></section>
+<section><h2>2. Platform commission per month</h2>
+<form action="#" method="get"><button type="submit">Run report</button></form>
+<table><thead><tr><th>Month</th><th>Total commission (VND)</th></tr></thead>
+<tbody><tr><td>2026-09</td><td>365,000</td></tr><tr><td>2026-10</td><td>90,000</td></tr></tbody></table></section>
+<section><h2>3. Customers who booked from more than N different merchants</h2>
+<form action="#" method="get"><label for="n3">More than (merchants)</label><input id="n3" name="n" type="number" min="0" value="3"><button type="submit">Run report</button></form>
+<table><thead><tr><th>Customer ID</th><th>Name</th><th>Different merchants</th></tr></thead>
+<tbody><tr><td colspan="3" class="muted">No customers match. (Expected with the current sample data.)</td></tr></tbody></table></section>
+<section><h2>4. Merchants with no booking in the last N days</h2>
+<form action="#" method="get"><label for="d4">Days</label><input id="d4" name="days" type="number" min="1" value="60"><button type="submit">Run report</button></form>
+<table><thead><tr><th>Merchant ID</th><th>Display name</th></tr></thead>
+<tbody><tr><td>111</td><td>SkinCare Lab Center</td></tr></tbody></table></section>
+<section><h2>5. Category with the highest average booking value</h2>
+<form action="#" method="get"><button type="submit">Run report</button></form>
+<table><thead><tr><th>Category ID</th><th>Category</th><th>Average booking value (VND)</th></tr></thead>
+<tbody><tr><td>7</td><td>Yoga &amp; Pilates</td><td>800,000.00</td></tr></tbody></table></section>
+</main>
 </body>
 </html>

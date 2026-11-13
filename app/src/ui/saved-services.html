@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>saved-services.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saved services</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>saved-services.html &mdash; Saved services: a customer's favourite services, with add and remove.</p>
+<div class="indicator"><b>saved-services.html</b> &mdash; A customer's saved (favourite) services, with options to add and remove.<span class="data">Data: SavedServiceDao.findDetailsByCustomer(), save(), remove()</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>Saved services</h1>
+<section>
+<form action="#" method="get"><label for="customer">Customer</label>
+<select id="customer" name="customer"><option>301 &ndash; Nhật Nguyễn</option><option>302 &ndash; Minh Trần</option></select>
+<button type="submit">Show saved services</button></form>
+</section>
+<section><h2>Saved by Nhật Nguyễn</h2>
+<p class="count">2 saved services</p>
+<table>
+<thead><tr><th>Service ID</th><th>Title</th><th>List price (VND)</th><th>Saved at</th><th></th></tr></thead>
+<tbody>
+<tr><td>202</td><td>Trị mụn chuẩn y khoa</td><td>450,000</td><td>2026-03-02 08:30</td><td><button type="button">Remove</button></td></tr>
+<tr><td>201</td><td>Chăm sóc da mặt chuyên sâu</td><td>350,000</td><td>2026-03-02 08:00</td><td><button type="button">Remove</button></td></tr>
+</tbody></table>
+</section>
+<section><h2>Save another service</h2>
+<form action="#" method="post"><label for="svc">Service</label>
+<select id="svc" name="service"><option>203 &ndash; Cắt tóc nam nữ tạo kiểu</option></select>
+<button type="submit">Save service</button></form>
+<p class="msg">Message area: "You have already saved this service." (shown when the same service is saved twice)</p>
+</section>
+</main>
 </body>
 </html>

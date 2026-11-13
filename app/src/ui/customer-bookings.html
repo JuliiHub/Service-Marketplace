@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>customer-bookings.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customer and bookings</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>customer-bookings.html &mdash; Master-detail form: a customer (master) and all their bookings (detail).</p>
+<div class="indicator"><b>customer-bookings.html</b> &mdash; Master-detail form: pick a customer (master) and see all their bookings (detail).<span class="data">Data: CustomerDao.findById(), BookingDao.findByCustomer()</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="services-browse.html">Browse</a>
+<a href="services-search.html">Search</a>
+<a href="saved-services.html">Saved</a>
+<a href="customer-bookings.html">Customer bookings</a>
+<a href="booking-detail.html">Booking detail</a>
+<a href="booking-new.html">New booking</a>
+<a href="service-edit.html">Edit services</a>
+<a href="merchant-edit.html">Edit merchants</a>
+<a href="customer-edit.html">Edit customers</a>
+<a href="reports.html">Reports</a>
+</nav>
+<main>
+<h1>Customer and their bookings</h1>
+<section><h2>Master: customer</h2>
+<form action="#" method="get"><label for="customer">Customer</label>
+<select id="customer" name="customer"><option>301 &ndash; Nhật Nguyễn</option><option>302 &ndash; Minh Trần</option></select>
+<button type="submit">Show</button></form>
+<table>
+<tr><th>Customer ID</th><td>301</td><th>Email</th><td>nhat.nguyen@gmail.com</td></tr>
+<tr><th>Name</th><td>Nhật Nguyễn</td><th>Registered</th><td>2026-03-01 08:00</td></tr>
+</table></section>
+<section><h2>Detail: bookings</h2>
+<p class="count">1 booking</p>
+<table>
+<thead><tr><th>Booking ID</th><th>Service</th><th>Date and time</th><th>Status</th><th>Price (VND)</th><th>Review score</th><th></th></tr></thead>
+<tbody><tr><td>501</td><td>Chăm sóc da mặt chuyên sâu</td><td>2026-09-01 10:00</td><td>COMPLETED</td><td>350,000</td><td>5</td><td><a href="booking-detail.html">Open</a></td></tr></tbody>
+</table></section>
+</main>
 </body>
 </html>
