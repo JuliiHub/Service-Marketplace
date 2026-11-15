@@ -22,50 +22,488 @@
 <a href="reports.html">Reports</a>
 </nav>
 <main>
-<h1>Edit merchants</h1>
-<section><h2>Merchants</h2>
-<table>
-<thead><tr><th>ID</th><th>Display name</th><th>Email</th><th>Verification</th><th></th></tr></thead>
-<tbody>
-<tr><td>101</td><td>Spa Mai Anh</td><td>contact@spamaianh.vn</td><td>VERIFIED</td><td><button type="button">Select</button></td></tr>
-<tr><td>111</td><td>SkinCare Lab Center</td><td>skincare.lab@gmail.com</td><td>PENDING</td><td><button type="button">Select</button></td></tr>
-<tr><td colspan="5" class="muted">&hellip; remaining rows</td></tr>
-</tbody></table></section>
-<form action="#" method="post">
-<fieldset><legend>Merchant</legend>
-<div class="row">
-<div><label for="email">Email</label><input id="email" name="email" type="email" required></div>
-<div><label for="display">Display name</label><input id="display" name="display" type="text" required></div>
-<div><label for="verify">Verification status</label><select id="verify" name="verify"><option>PENDING</option><option>VERIFIED</option><option>REJECTED</option></select></div>
-</div>
-<label>Merchant type (only when adding)</label>
-<div><label><input type="radio" name="type" value="individual" checked> Individual</label>
-<label><input type="radio" name="type" value="business"> Business</label></div>
-</fieldset>
-<fieldset><legend>Individual details</legend>
-<div class="row">
-<div><label for="ifirst">First name</label><input id="ifirst" name="ifirst" type="text"></div>
-<div><label for="ilast">Last name</label><input id="ilast" name="ilast" type="text"></div>
-</div>
-<div class="row">
-<div><label for="nid">National ID</label><input id="nid" name="nid" type="text"></div>
-<div><label for="dob">Date of birth (optional)</label><input id="dob" name="dob" type="date"></div>
-</div>
-</fieldset>
-<fieldset><legend>Business details</legend>
-<div class="row">
-<div><label for="legal">Legal name</label><input id="legal" name="legal" type="text"></div>
-<div><label for="reg">Business registration no.</label><input id="reg" name="reg" type="text"></div>
-</div>
-<div class="row">
-<div><label for="tax">Tax number (optional)</label><input id="tax" name="tax" type="text"></div>
-<div><label for="contact">Contact person (optional)</label><input id="contact" name="contact" type="text"></div>
-</div>
-</fieldset>
-<button type="submit">Add merchant</button><button type="submit">Save changes</button><button type="button">Update verification only</button><button type="button">Delete selected</button>
-</form>
-<div class="confirm"><b>Confirm delete</b><br>Delete "Spa Mai Anh" and all its services? This cannot be undone.
-<br><button type="button">Yes, delete</button><button type="button">Cancel</button></div>
+
+    <div class="page-header">
+        <div>
+            <h1>Manage Merchants</h1>
+            <p class="muted">
+                Add, edit, verify and manage individual or business merchants.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- MERCHANT LIST -->
+    <section>
+
+        <div class="section-header">
+            <div>
+                <h2>Merchants</h2>
+                <p class="muted">
+                    Select a merchant to view or update their information.
+                </p>
+            </div>
+
+            <span class="count">
+                Select a record to edit
+            </span>
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="service-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Merchant</th>
+                        <th>Email</th>
+                        <th>Verification</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td class="id-cell">
+                            #101
+                        </td>
+
+                        <td>
+                            <strong>Spa Mai Anh</strong>
+                        </td>
+
+                        <td>
+                            contact@spamaianh.vn
+                        </td>
+
+                        <td>
+                            <span class="status status-completed">
+                                Verified
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="select-button"
+                                type="button">
+                                Select
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="id-cell">
+                            #111
+                        </td>
+
+                        <td>
+                            <strong>
+                                SkinCare Lab Center
+                            </strong>
+                        </td>
+
+                        <td>
+                            skincare.lab@gmail.com
+                        </td>
+
+                        <td>
+                            <span class="status status-requested">
+                                Pending
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="select-button"
+                                type="button">
+                                Select
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="table-note">
+            Merchants are loaded using
+            <strong>MerchantDao.findAll()</strong>.
+        </p>
+
+    </section>
+
+
+    <form action="#" method="post">
+
+
+        <!-- GENERAL MERCHANT INFO -->
+        <section>
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Merchant Information</h2>
+
+                    <p class="muted">
+                        Basic account and verification information.
+                    </p>
+                </div>
+
+                <span class="status status-requested">
+                    Pending
+                </span>
+
+            </div>
+
+
+            <div class="merchant-basic-grid">
+
+                <div>
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="merchant@example.com"
+                        required>
+                </div>
+
+
+                <div>
+                    <label for="display">
+                        Display Name
+                    </label>
+
+                    <input
+                        id="display"
+                        name="display"
+                        type="text"
+                        placeholder="Merchant display name"
+                        required>
+                </div>
+
+
+                <div>
+                    <label for="verify">
+                        Verification Status
+                    </label>
+
+                    <select
+                        id="verify"
+                        name="verify">
+
+                        <option>PENDING</option>
+                        <option>VERIFIED</option>
+                        <option>REJECTED</option>
+
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="merchant-type">
+
+                <span class="field-title">
+                    Merchant Type
+                </span>
+
+                <p class="muted">
+                    Choose a type when adding a new merchant.
+                </p>
+
+
+                <div class="type-options">
+
+                    <label class="type-card">
+
+                        <input
+                            type="radio"
+                            name="type"
+                            value="individual"
+                            checked>
+
+                        <span>
+                            <strong>Individual</strong>
+                            <small>Personal service provider</small>
+                        </span>
+
+                    </label>
+
+
+                    <label class="type-card">
+
+                        <input
+                            type="radio"
+                            name="type"
+                            value="business">
+
+                        <span>
+                            <strong>Business</strong>
+                            <small>Registered organization</small>
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INDIVIDUAL -->
+        <section>
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Individual Details</h2>
+
+                    <p class="muted">
+                        Complete these fields for an individual merchant.
+                    </p>
+                </div>
+
+                <span class="type-label">
+                    Individual
+                </span>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div>
+                    <label for="ifirst">
+                        First Name
+                    </label>
+
+                    <input
+                        id="ifirst"
+                        name="ifirst"
+                        type="text"
+                        placeholder="First name">
+                </div>
+
+
+                <div>
+                    <label for="ilast">
+                        Last Name
+                    </label>
+
+                    <input
+                        id="ilast"
+                        name="ilast"
+                        type="text"
+                        placeholder="Last name">
+                </div>
+
+
+                <div>
+                    <label for="nid">
+                        National ID
+                    </label>
+
+                    <input
+                        id="nid"
+                        name="nid"
+                        type="text"
+                        placeholder="National ID number">
+                </div>
+
+
+                <div>
+                    <label for="dob">
+                        Date of Birth
+                    </label>
+
+                    <input
+                        id="dob"
+                        name="dob"
+                        type="date">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BUSINESS -->
+        <section>
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Business Details</h2>
+
+                    <p class="muted">
+                        Complete these fields for a business merchant.
+                    </p>
+                </div>
+
+                <span class="type-label business">
+                    Business
+                </span>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div>
+                    <label for="legal">
+                        Legal Name
+                    </label>
+
+                    <input
+                        id="legal"
+                        name="legal"
+                        type="text"
+                        placeholder="Registered legal name">
+                </div>
+
+
+                <div>
+                    <label for="reg">
+                        Business Registration No.
+                    </label>
+
+                    <input
+                        id="reg"
+                        name="reg"
+                        type="text"
+                        placeholder="Registration number">
+                </div>
+
+
+                <div>
+                    <label for="tax">
+                        Tax Number
+                    </label>
+
+                    <input
+                        id="tax"
+                        name="tax"
+                        type="text"
+                        placeholder="Optional">
+                </div>
+
+
+                <div>
+                    <label for="contact">
+                        Contact Person
+                    </label>
+
+                    <input
+                        id="contact"
+                        name="contact"
+                        type="text"
+                        placeholder="Optional">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACTIONS -->
+        <section class="action-section">
+
+            <div class="management-actions merchant-actions">
+
+                <div class="primary-actions">
+
+                    <button type="submit">
+                        Add Merchant
+                    </button>
+
+                    <button
+                        class="update-button"
+                        type="submit">
+                        Save Changes
+                    </button>
+
+                    <button
+                        class="verify-button"
+                        type="button">
+                        Update Verification
+                    </button>
+
+                </div>
+
+
+                <div class="secondary-actions">
+
+                    <button
+                        class="danger-button"
+                        type="button">
+                        Delete Selected
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </form>
+
+
+    <!-- DELETE CONFIRMATION -->
+    <div class="delete-confirmation">
+
+        <div class="delete-icon">
+            !
+        </div>
+
+
+        <div class="delete-content">
+
+            <strong>
+                Confirm Delete
+            </strong>
+
+            <p>
+                Delete <b>"Spa Mai Anh"</b> and all its services?
+                This action cannot be undone.
+            </p>
+
+
+            <div class="delete-actions">
+
+                <button
+                    class="danger-solid"
+                    type="button">
+                    Yes, Delete
+                </button>
+
+                <button
+                    class="clear-button"
+                    type="button">
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </main>
 </body>
 </html>

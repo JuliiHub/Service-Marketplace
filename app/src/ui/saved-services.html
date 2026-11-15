@@ -22,27 +22,214 @@
 <a href="reports.html">Reports</a>
 </nav>
 <main>
-<h1>Saved services</h1>
-<section>
-<form action="#" method="get"><label for="customer">Customer</label>
-<select id="customer" name="customer"><option>301 &ndash; Nhật Nguyễn</option><option>302 &ndash; Minh Trần</option></select>
-<button type="submit">Show saved services</button></form>
-</section>
-<section><h2>Saved by Nhật Nguyễn</h2>
-<p class="count">2 saved services</p>
-<table>
-<thead><tr><th>Service ID</th><th>Title</th><th>List price (VND)</th><th>Saved at</th><th></th></tr></thead>
-<tbody>
-<tr><td>202</td><td>Trị mụn chuẩn y khoa</td><td>450,000</td><td>2026-03-02 08:30</td><td><button type="button">Remove</button></td></tr>
-<tr><td>201</td><td>Chăm sóc da mặt chuyên sâu</td><td>350,000</td><td>2026-03-02 08:00</td><td><button type="button">Remove</button></td></tr>
-</tbody></table>
-</section>
-<section><h2>Save another service</h2>
-<form action="#" method="post"><label for="svc">Service</label>
-<select id="svc" name="service"><option>203 &ndash; Cắt tóc nam nữ tạo kiểu</option></select>
-<button type="submit">Save service</button></form>
-<p class="msg">Message area: "You have already saved this service." (shown when the same service is saved twice)</p>
-</section>
+
+    <div class="page-header">
+        <div>
+            <h1>Saved Services</h1>
+            <p class="muted">
+                View and manage services saved by customers.
+            </p>
+        </div>
+
+        <a class="secondary-link" href="services-browse.html">
+            Browse Services
+        </a>
+    </div>
+
+
+    <!-- CUSTOMER SELECTOR -->
+    <section>
+
+        <div class="section-header">
+            <div>
+                <h2>Select Customer</h2>
+                <p class="muted">
+                    Choose a customer to view their saved services.
+                </p>
+            </div>
+        </div>
+
+        <form action="#" method="get">
+
+            <div class="customer-selector">
+
+                <div>
+                    <label for="customer">Customer</label>
+
+                    <select id="customer" name="customer">
+                        <option>
+                            301 &ndash; Nhật Nguyễn
+                        </option>
+
+                        <option>
+                            302 &ndash; Minh Trần
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit">
+                    Show Saved Services
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- SAVED SERVICES -->
+    <section>
+
+        <div class="section-header">
+
+            <div>
+                <h2>Saved by Nhật Nguyễn</h2>
+
+                <p class="count">
+                    2 saved services
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="service-table">
+
+                <thead>
+                    <tr>
+                        <th>Service ID</th>
+                        <th>Service</th>
+                        <th>Price</th>
+                        <th>Saved At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td class="id-cell">
+                            #202
+                        </td>
+
+                        <td>
+                            <strong>
+                                Trị mụn chuẩn y khoa
+                            </strong>
+                        </td>
+
+                        <td class="price-cell">
+                            450,000 VND
+                        </td>
+
+                        <td>
+                            2026-03-02 08:30
+                        </td>
+
+                        <td>
+                            <button
+                                class="danger-button"
+                                type="button">
+                                Remove
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="id-cell">
+                            #201
+                        </td>
+
+                        <td>
+                            <strong>
+                                Chăm sóc da mặt chuyên sâu
+                            </strong>
+                        </td>
+
+                        <td class="price-cell">
+                            350,000 VND
+                        </td>
+
+                        <td>
+                            2026-03-02 08:00
+                        </td>
+
+                        <td>
+                            <button
+                                class="danger-button"
+                                type="button">
+                                Remove
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- SAVE NEW SERVICE -->
+    <section>
+
+        <div class="section-header">
+            <div>
+                <h2>Save Another Service</h2>
+
+                <p class="muted">
+                    Add another service to this customer's saved list.
+                </p>
+            </div>
+        </div>
+
+
+        <form action="#" method="post">
+
+            <div class="save-service-row">
+
+                <div>
+                    <label for="svc">
+                        Service
+                    </label>
+
+                    <select
+                        id="svc"
+                        name="service">
+
+                        <option>
+                            203 &ndash; Cắt tóc nam nữ tạo kiểu
+                        </option>
+
+                    </select>
+                </div>
+
+                <button type="submit">
+                    Save Service
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <p class="msg">
+            You have already saved this service.
+        </p>
+
+    </section>
+
 </main>
 </body>
 </html>

@@ -22,29 +22,200 @@
 <a href="reports.html">Reports</a>
 </nav>
 <main>
-<h1>New booking</h1>
-<form action="#" method="post">
-<fieldset><legend>Booking</legend>
-<div class="row">
-<div><label for="customer">Customer</label><select id="customer" name="customer"><option>301 &ndash; Nhật Nguyễn</option></select></div>
-<div><label for="service">Service</label><select id="service" name="service"><option>216 &ndash; Chăm sóc da cổ chuyên sâu (300,000 VND)</option></select></div>
-</div>
-<div class="row">
-<div><label for="when">Date and time</label><input id="when" name="when" type="datetime-local"></div>
-<div><label for="price">Charged price (VND)</label><input id="price" name="price" type="number" min="0" step="1000"></div>
-</div>
-<label for="note">Customer note</label><textarea id="note" name="note" rows="2"></textarea>
-</fieldset>
-<fieldset><legend>Payment</legend>
-<div class="row">
-<div><label for="method">Method</label><select id="method" name="method"><option>MOMO</option><option>VNPay</option><option>BANK_TRANSFER</option><option>CREDIT_CARD</option><option>CASH</option></select></div>
-<div><label for="amount">Amount paid (VND)</label><input id="amount" name="amount" type="number" min="0" step="1000"></div>
-<div><label for="commission">Platform commission (VND)</label><input id="commission" name="commission" type="number" min="0" step="1000" value="0"></div>
-</div>
-</fieldset>
-<button type="submit">Create booking and payment</button><button type="reset">Clear</button>
-</form>
-<p class="msg">Message area: "Nothing was saved because the payment or the booking could not be created: (reason)."</p>
+
+    <div class="page-header">
+        <div>
+            <h1>New Booking</h1>
+            <p class="muted">
+                Create a booking and its payment together in one transaction.
+            </p>
+        </div>
+
+        <a class="secondary-link" href="customer-bookings.html">
+            ← Back to Bookings
+        </a>
+    </div>
+
+
+    <form action="#" method="post">
+
+        <!-- BOOKING INFORMATION -->
+        <section>
+
+            <div class="section-header">
+                <div>
+                    <h2>Booking Information</h2>
+                    <p class="muted">
+                        Select the customer, service and booking schedule.
+                    </p>
+                </div>
+
+                <span class="step-badge">Step 1</span>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div>
+                    <label for="customer">Customer</label>
+
+                    <select id="customer" name="customer">
+                        <option>
+                            301 &ndash; Nhật Nguyễn
+                        </option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="service">Service</label>
+
+                    <select id="service" name="service">
+                        <option>
+                            216 &ndash; Chăm sóc da cổ chuyên sâu (300,000 VND)
+                        </option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="when">Date &amp; Time</label>
+
+                    <input
+                        id="when"
+                        name="when"
+                        type="datetime-local">
+                </div>
+
+
+                <div>
+                    <label for="price">Charged Price (VND)</label>
+
+                    <input
+                        id="price"
+                        name="price"
+                        type="number"
+                        min="0"
+                        step="1000"
+                        placeholder="e.g. 300000">
+                </div>
+
+            </div>
+
+
+            <div class="full-field">
+                <label for="note">Customer Note</label>
+
+                <textarea
+                    id="note"
+                    name="note"
+                    rows="3"
+                    placeholder="Add any special request or note from the customer..."></textarea>
+            </div>
+
+        </section>
+
+
+        <!-- PAYMENT INFORMATION -->
+        <section>
+
+            <div class="section-header">
+                <div>
+                    <h2>Payment Information</h2>
+                    <p class="muted">
+                        Enter the payment details for this booking.
+                    </p>
+                </div>
+
+                <span class="step-badge">Step 2</span>
+            </div>
+
+
+            <div class="payment-grid">
+
+                <div>
+                    <label for="method">Payment Method</label>
+
+                    <select id="method" name="method">
+                        <option>MOMO</option>
+                        <option>VNPay</option>
+                        <option>BANK_TRANSFER</option>
+                        <option>CREDIT_CARD</option>
+                        <option>CASH</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="amount">Amount Paid (VND)</label>
+
+                    <input
+                        id="amount"
+                        name="amount"
+                        type="number"
+                        min="0"
+                        step="1000"
+                        placeholder="e.g. 300000">
+                </div>
+
+
+                <div>
+                    <label for="commission">
+                        Platform Commission (VND)
+                    </label>
+
+                    <input
+                        id="commission"
+                        name="commission"
+                        type="number"
+                        min="0"
+                        step="1000"
+                        value="0">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSACTION INFO -->
+        <div class="transaction-info">
+
+            <div class="transaction-icon">✓</div>
+
+            <div>
+                <strong>Atomic transaction</strong>
+
+                <p>
+                    The booking and payment are created together.
+                    If either operation fails, neither record will be saved.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+        <div class="create-actions">
+
+            <button type="submit">
+                Create Booking &amp; Payment
+            </button>
+
+            <button type="reset">
+                Clear Form
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <p class="msg">
+        Nothing was saved because the payment or booking could not
+        be created: (reason).
+    </p>
+
 </main>
 </body>
 </html>

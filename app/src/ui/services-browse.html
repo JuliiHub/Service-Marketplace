@@ -22,19 +22,156 @@
 <a href="reports.html">Reports</a>
 </nav>
 <main>
-<h1>Browse services</h1>
-<p class="muted">All services, sorted by title.</p>
-<section>
-<p class="count">15 services found</p>
-<table>
-<thead><tr><th>ID</th><th>Title</th><th>Category</th><th>Merchant</th><th>List price (VND)</th><th>Duration (min)</th><th>Offered</th><th></th></tr></thead>
-<tbody>
-<tr><td>203</td><td>Cắt tóc nam nữ tạo kiểu</td><td>Cắt tóc nam nữ</td><td>Hair Salon Pro</td><td>150,000</td><td>45</td><td>Yes</td><td><a href="service-edit.html">Edit</a></td></tr>
-<tr><td>201</td><td>Chăm sóc da mặt chuyên sâu</td><td>Chăm sóc da mặt</td><td>Spa Mai Anh</td><td>350,000</td><td>60</td><td>Yes</td><td><a href="service-edit.html">Edit</a></td></tr>
-<tr><td>209</td><td>Thẻ tập Yoga 10 buổi</td><td>Yoga &amp; Pilates</td><td>Zen Yoga Studio</td><td>800,000</td><td>60</td><td>Yes</td><td><a href="service-edit.html">Edit</a></td></tr>
-<tr><td colspan="8" class="muted">&hellip; remaining rows</td></tr>
-</tbody></table>
-</section>
+
+    <div class="page-header">
+        <div>
+            <h1>Browse Services</h1>
+            <p class="muted">
+                View all services currently available in the marketplace.
+            </p>
+        </div>
+
+        <a class="action-button" href="service-edit.html">
+            + Add Service
+        </a>
+    </div>
+
+    <section>
+
+        <div class="section-header">
+            <div>
+                <h2>All Services</h2>
+                <p class="count">15 services found</p>
+            </div>
+
+            <a class="secondary-link" href="services-search.html">
+                Search & Filter
+            </a>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="service-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Service</th>
+                        <th>Category</th>
+                        <th>Merchant</th>
+                        <th>Price</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td class="id-cell">#203</td>
+
+                        <td>
+                            <strong>Cắt tóc nam nữ tạo kiểu</strong>
+                        </td>
+
+                        <td>Cắt tóc nam nữ</td>
+
+                        <td>Hair Salon Pro</td>
+
+                        <td class="price-cell">
+                            150,000 VND
+                        </td>
+
+                        <td>45 min</td>
+
+                        <td>
+                            <span class="status status-active">
+                                Offered
+                            </span>
+                        </td>
+
+                        <td>
+                            <a class="table-action"
+                               href="service-edit.html">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="id-cell">#201</td>
+
+                        <td>
+                            <strong>Chăm sóc da mặt chuyên sâu</strong>
+                        </td>
+
+                        <td>Chăm sóc da mặt</td>
+
+                        <td>Spa Mai Anh</td>
+
+                        <td class="price-cell">
+                            350,000 VND
+                        </td>
+
+                        <td>60 min</td>
+
+                        <td>
+                            <span class="status status-active">
+                                Offered
+                            </span>
+                        </td>
+
+                        <td>
+                            <a class="table-action"
+                               href="service-edit.html">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="id-cell">#209</td>
+
+                        <td>
+                            <strong>Thẻ tập Yoga 10 buổi</strong>
+                        </td>
+
+                        <td>Yoga &amp; Pilates</td>
+
+                        <td>Zen Yoga Studio</td>
+
+                        <td class="price-cell">
+                            800,000 VND
+                        </td>
+
+                        <td>60 min</td>
+
+                        <td>
+                            <span class="status status-active">
+                                Offered
+                            </span>
+                        </td>
+
+                        <td>
+                            <a class="table-action"
+                               href="service-edit.html">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <p class="table-note">
+            Showing sample rows. Remaining services are loaded from
+            <strong>ServiceDao.findAll()</strong>.
+        </p>
+
+    </section>
+
 </main>
 </body>
 </html>

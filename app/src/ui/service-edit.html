@@ -22,33 +22,364 @@
 <a href="reports.html">Reports</a>
 </nav>
 <main>
-<h1>Edit services</h1>
-<section><h2>Services</h2>
-<table>
-<thead><tr><th>ID</th><th>Title</th><th>Merchant</th><th>List price</th><th></th></tr></thead>
-<tbody>
-<tr><td>201</td><td>Chăm sóc da mặt chuyên sâu</td><td>Spa Mai Anh</td><td>350,000</td><td><button type="button">Select</button></td></tr>
-<tr><td>202</td><td>Trị mụn chuẩn y khoa</td><td>Spa Mai Anh</td><td>450,000</td><td><button type="button">Select</button></td></tr>
-<tr><td colspan="5" class="muted">&hellip; remaining rows</td></tr>
-</tbody></table></section>
-<form action="#" method="post">
-<fieldset><legend>Service details</legend>
-<div class="row">
-<div><label for="merchant">Merchant</label><select id="merchant" name="merchant"><option>101 &ndash; Spa Mai Anh</option></select></div>
-<div><label for="category">Category</label><select id="category" name="category"><option>Chăm sóc da mặt</option></select></div>
-</div>
-<label for="title">Title</label><input id="title" name="title" type="text" required>
-<label for="description">Description</label><textarea id="description" name="description" rows="3"></textarea>
-<div class="row">
-<div><label for="price">List price (VND, 0 or more)</label><input id="price" name="price" type="number" min="0" step="1000" required></div>
-<div><label for="duration">Duration (minutes, more than 0)</label><input id="duration" name="duration" type="number" min="1" required></div>
-<div><label for="offered">Currently offered</label><input id="offered" name="offered" type="checkbox" checked></div>
-</div>
-<button type="submit">Insert as new</button><button type="submit">Update selected</button><button type="button">Delete selected</button><button type="reset">Clear form</button>
-</fieldset></form>
-<div class="confirm"><b>Confirm delete</b><br>Delete "Chăm sóc da mặt chuyên sâu"? This cannot be undone.
-<br><button type="button">Yes, delete</button><button type="button">Cancel</button></div>
-<p class="msg">Message area: "This service has bookings, so it cannot be deleted." (constraint errors in plain language)</p>
+
+    <div class="page-header">
+        <div>
+            <h1>Manage Services</h1>
+            <p class="muted">
+                Create, update and manage services available in the marketplace.
+            </p>
+        </div>
+
+        <a class="secondary-link" href="services-browse.html">
+            View All Services
+        </a>
+    </div>
+
+
+    <!-- SERVICE LIST -->
+    <section>
+
+        <div class="section-header">
+            <div>
+                <h2>Services</h2>
+                <p class="muted">
+                    Select a service below to view or edit its information.
+                </p>
+            </div>
+
+            <span class="count">
+                Select a record to edit
+            </span>
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="service-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Service</th>
+                        <th>Merchant</th>
+                        <th>List Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td class="id-cell">
+                            #201
+                        </td>
+
+                        <td>
+                            <strong>
+                                Chăm sóc da mặt chuyên sâu
+                            </strong>
+                        </td>
+
+                        <td>
+                            Spa Mai Anh
+                        </td>
+
+                        <td class="price-cell">
+                            350,000 VND
+                        </td>
+
+                        <td>
+                            <button
+                                class="select-button"
+                                type="button">
+                                Select
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td class="id-cell">
+                            #202
+                        </td>
+
+                        <td>
+                            <strong>
+                                Trị mụn chuẩn y khoa
+                            </strong>
+                        </td>
+
+                        <td>
+                            Spa Mai Anh
+                        </td>
+
+                        <td class="price-cell">
+                            450,000 VND
+                        </td>
+
+                        <td>
+                            <button
+                                class="select-button"
+                                type="button">
+                                Select
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="table-note">
+            Services are loaded using
+            <strong>ServiceDao.findAll()</strong>.
+        </p>
+
+    </section>
+
+
+    <!-- SERVICE FORM -->
+    <form action="#" method="post">
+
+        <section>
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Service Details</h2>
+
+                    <p class="muted">
+                        Enter service information or edit the selected record.
+                    </p>
+                </div>
+
+                <span class="status status-active">
+                    Offered
+                </span>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div>
+                    <label for="merchant">
+                        Merchant
+                    </label>
+
+                    <select
+                        id="merchant"
+                        name="merchant">
+
+                        <option>
+                            101 &ndash; Spa Mai Anh
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select
+                        id="category"
+                        name="category">
+
+                        <option>
+                            Chăm sóc da mặt
+                        </option>
+
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="full-field">
+
+                <label for="title">
+                    Service Title
+                </label>
+
+                <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    placeholder="Enter service title"
+                    required>
+
+            </div>
+
+
+            <div class="full-field">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    placeholder="Describe the service..."></textarea>
+
+            </div>
+
+
+            <div class="service-meta-grid">
+
+                <div>
+                    <label for="price">
+                        List Price (VND)
+                    </label>
+
+                    <input
+                        id="price"
+                        name="price"
+                        type="number"
+                        min="0"
+                        step="1000"
+                        placeholder="e.g. 350000"
+                        required>
+                </div>
+
+
+                <div>
+                    <label for="duration">
+                        Duration (minutes)
+                    </label>
+
+                    <input
+                        id="duration"
+                        name="duration"
+                        type="number"
+                        min="1"
+                        placeholder="e.g. 60"
+                        required>
+                </div>
+
+
+                <div class="checkbox-field">
+
+                    <label>
+                        Availability
+                    </label>
+
+                    <label class="checkbox-card">
+
+                        <input
+                            id="offered"
+                            name="offered"
+                            type="checkbox"
+                            checked>
+
+                        <span>
+                            Currently offered
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="management-actions">
+
+                <div class="primary-actions">
+
+                    <button type="submit">
+                        Insert as New
+                    </button>
+
+                    <button
+                        class="update-button"
+                        type="submit">
+                        Update Selected
+                    </button>
+
+                </div>
+
+
+                <div class="secondary-actions">
+
+                    <button
+                        class="danger-button"
+                        type="button">
+                        Delete Selected
+                    </button>
+
+                    <button
+                        class="clear-button"
+                        type="reset">
+                        Clear Form
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </form>
+
+
+    <!-- DELETE CONFIRMATION -->
+    <div class="delete-confirmation">
+
+        <div class="delete-icon">
+            !
+        </div>
+
+        <div class="delete-content">
+
+            <strong>
+                Confirm Delete
+            </strong>
+
+            <p>
+                Delete
+                <b>"Chăm sóc da mặt chuyên sâu"</b>?
+                This action cannot be undone.
+            </p>
+
+
+            <div class="delete-actions">
+
+                <button
+                    class="danger-solid"
+                    type="button">
+                    Yes, Delete
+                </button>
+
+                <button
+                    class="clear-button"
+                    type="button">
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <p class="msg">
+        This service has bookings, so it cannot be deleted.
+    </p>
+
 </main>
 </body>
 </html>

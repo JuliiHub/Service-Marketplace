@@ -22,34 +22,331 @@
 <a href="reports.html">Reports</a>
 </nav>
 <main>
-<h1>Booking 501</h1>
-<section><h2>Master: booking</h2>
-<table>
-<tr><th>Customer</th><td>301 &ndash; Nhật Nguyễn</td><th>Service</th><td>201 &ndash; Chăm sóc da mặt chuyên sâu</td></tr>
-<tr><th>Date and time</th><td>2026-09-01 10:00</td><th>Charged price</th><td>350,000 VND</td></tr>
-<tr><th>Status</th><td>COMPLETED</td><th>Customer note</th><td>Làm nhẹ nhàng giúp em</td></tr>
-</table>
-<form action="#" method="post"><div class="row">
-<div><label for="status">Change status</label>
-<select id="status" name="status"><option>REQUESTED</option><option>CONFIRMED</option><option selected>COMPLETED</option><option>CANCELLED</option></select></div>
-<div></div></div><button type="submit">Update status</button></form>
-</section>
-<section><h2>Detail: payment</h2>
-<table>
-<tr><th>Payment ID</th><td>401</td><th>Method</th><td>MOMO</td></tr>
-<tr><th>Amount paid</th><td>350,000 VND</td><th>Platform commission</th><td>35,000 VND</td></tr>
-<tr><th>Status</th><td>COMPLETED</td><th>Paid on</th><td>2026-09-01 10:00</td></tr>
-</table>
-<p class="muted">If the booking has no payment yet, show: "No payment recorded for this booking."</p>
-</section>
-<section><h2>Detail: review</h2>
-<form action="#" method="post"><div class="row">
-<div><label for="score">Score (1 to 5)</label><input id="score" name="score" type="number" min="1" max="5" value="5"></div>
-<div style="flex:3"><label for="comment">Comment</label><textarea id="comment" name="comment" rows="2">Dịch vụ rất tốt, nhân viên thân thiện!</textarea></div>
-</div>
-<button type="submit">Save review</button><button type="button">Delete review</button></form>
-<p class="muted">A booking can have at most one review. If there is none, show an empty form with "Add review".</p>
-</section>
+
+    <div class="page-header">
+
+        <div>
+            <h1>Booking #501</h1>
+
+            <p class="muted">
+                View booking information, payment details and customer review.
+            </p>
+        </div>
+
+        <a class="secondary-link"
+           href="customer-bookings.html">
+            ← Back to Bookings
+        </a>
+
+    </div>
+
+
+    <!-- BOOKING -->
+    <section>
+
+        <div class="section-header">
+
+            <div>
+                <h2>Booking Information</h2>
+
+                <span class="status status-completed">
+                    Completed
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="info-grid booking-info-grid">
+
+            <div class="info-item">
+                <span class="info-label">
+                    Customer
+                </span>
+
+                <strong>
+                    #301 · Nhật Nguyễn
+                </strong>
+            </div>
+
+
+            <div class="info-item">
+                <span class="info-label">
+                    Service
+                </span>
+
+                <strong>
+                    Chăm sóc da mặt chuyên sâu
+                </strong>
+            </div>
+
+
+            <div class="info-item">
+                <span class="info-label">
+                    Date &amp; Time
+                </span>
+
+                <strong>
+                    2026-09-01 10:00
+                </strong>
+            </div>
+
+
+            <div class="info-item">
+                <span class="info-label">
+                    Charged Price
+                </span>
+
+                <strong>
+                    350,000 VND
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="booking-note">
+
+            <span class="info-label">
+                Customer Note
+            </span>
+
+            <p>
+                Làm nhẹ nhàng giúp em
+            </p>
+
+        </div>
+
+
+        <form action="#" method="post">
+
+            <div class="status-update">
+
+                <div>
+                    <label for="status">
+                        Change Status
+                    </label>
+
+                    <select
+                        id="status"
+                        name="status">
+
+                        <option>
+                            REQUESTED
+                        </option>
+
+                        <option>
+                            CONFIRMED
+                        </option>
+
+                        <option selected>
+                            COMPLETED
+                        </option>
+
+                        <option>
+                            CANCELLED
+                        </option>
+
+                    </select>
+                </div>
+
+                <button type="submit">
+                    Update Status
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- PAYMENT -->
+    <section>
+
+        <div class="section-header">
+
+            <div>
+                <h2>Payment Details</h2>
+
+                <p class="muted">
+                    Payment associated with this booking.
+                </p>
+            </div>
+
+            <span class="status status-completed">
+                Paid
+            </span>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Payment ID
+                </span>
+
+                <strong>#401</strong>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Payment Method
+                </span>
+
+                <strong>MOMO</strong>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Amount Paid
+                </span>
+
+                <strong>
+                    350,000 VND
+                </strong>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Platform Commission
+                </span>
+
+                <strong>
+                    35,000 VND
+                </strong>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Payment Status
+                </span>
+
+                <strong>
+                    COMPLETED
+                </strong>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Paid On
+                </span>
+
+                <strong>
+                    2026-09-01 10:00
+                </strong>
+
+            </div>
+
+        </div>
+
+        <p class="table-note">
+            If no payment exists, show:
+            "No payment recorded for this booking."
+        </p>
+
+    </section>
+
+
+    <!-- REVIEW -->
+    <section>
+
+        <div class="section-header">
+
+            <div>
+                <h2>Customer Review</h2>
+
+                <p class="muted">
+                    View or update the review associated with this booking.
+                </p>
+            </div>
+
+            <span class="rating">
+                ★ 5
+            </span>
+
+        </div>
+
+
+        <form action="#" method="post">
+
+            <div class="review-grid">
+
+                <div>
+
+                    <label for="score">
+                        Score
+                    </label>
+
+                    <input
+                        id="score"
+                        name="score"
+                        type="number"
+                        min="1"
+                        max="5"
+                        value="5">
+
+                </div>
+
+
+                <div>
+
+                    <label for="comment">
+                        Comment
+                    </label>
+
+                    <textarea
+                        id="comment"
+                        name="comment"
+                        rows="3">Dịch vụ rất tốt, nhân viên thân thiện!</textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="submit">
+                    Save Review
+                </button>
+
+                <button
+                    class="danger-button"
+                    type="button">
+                    Delete Review
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <p class="table-note">
+            A booking can have at most one review.
+            If no review exists, display an empty form to add one.
+        </p>
+
+    </section>
+
 </main>
 </body>
 </html>
